@@ -42,7 +42,7 @@ describe('engine', function(){
         logger: {debug: function(){}}
       };
       var engine = require('../../lib/engine').apply(scope);
-      engine._attachAuthToUser({}, function(err, user){
+      engine._attachAuthToUser({},{}, function(err, user){
         err.should.be.ok;
         done();
       });
@@ -70,7 +70,7 @@ describe('engine', function(){
         logger: {debug: function(){}}
       };
       var engine = require('../../lib/engine').apply(scope);
-      engine._attachAuthToUser({}, function(err, user){
+      engine._attachAuthToUser({},{},function(err, user){
         err.should.be.ok;
         done();
       });
@@ -97,14 +97,14 @@ describe('engine', function(){
         }
       };
       var engine = require('../../lib/engine').apply(scope);
-      engine._attachAuthToUser({}, function(err, user){
+      engine._attachAuthToUser({}, {}, function(err, user){
         user.should.be.type('object');
         done();
       });
     });
     it('should return an existing user auth object', function(done){
       var engine = require('../../lib/engine').call();
-      engine._attachAuthToUser({user: {auth:{}}}, function(err, user){
+      engine._attachAuthToUser({user: {auth:{}}},{}, function(err, user){
         user.should.be.type('object');
         done();
       });
@@ -122,7 +122,7 @@ describe('engine', function(){
         }
       };
       var engine = require('../../lib/engine').apply(scope);
-      engine._attachAuthToUser({user: {}}, function(){});
+      engine._attachAuthToUser({user: {}}, {},function(){});
     });
   });
   describe('#findOrCreateAuth()', function(){
